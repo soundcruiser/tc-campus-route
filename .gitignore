@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.DS_Store
+*.local
+
+# 環境・秘密情報
+.env
+.env.*
+
+# テスト・ツール
+coverage/
+*.log
+
+# 旧単体HTML版（Vite移行前の参照用。ローカルに残す場合はここで除外）
+index_ver2.html
