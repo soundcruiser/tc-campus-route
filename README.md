@@ -1,13 +1,28 @@
 # 校内コースルート — 学習アプリ
 
+[![CI](https://github.com/soundcruiser/tc-campus-route/actions/workflows/ci.yml/badge.svg)](https://github.com/soundcruiser/tc-campus-route/actions/workflows/ci.yml)
+[![Deploy](https://github.com/soundcruiser/tc-campus-route/actions/workflows/deploy.yml/badge.svg)](https://github.com/soundcruiser/tc-campus-route/actions/workflows/deploy.yml)
+
 修了検定（A/B/C）の **1本のつながった道順** を地図上に打ち込み、**自分で決めたフェーズ**ごとに色分けして学習するアプリです。
 
-## 起動
+## 公開デモ
+
+**https://soundcruiser.github.io/tc-campus-route/**
+
+（`main` ブランチへの push で GitHub Pages に自動デプロイされます）
+
+## リポジトリ
+
+https://github.com/soundcruiser/tc-campus-route
+
+## 起動（ローカル開発）
 
 ```bash
 npm install
 npm run dev
 ```
+
+ブラウザで Vite の表示 URL（通常 `http://localhost:5173`）を開きます。
 
 ## 使い方
 
@@ -55,11 +70,21 @@ npm run dev
 ## 開発
 
 ```bash
-npm test          # ユニットテスト（タイムライン・重要点判定など）
-npm run build
+npm test          # ユニットテスト
+npm run build     # 本番ビルド（dist/）
+npm run preview   # ビルド結果のプレビュー
 ```
 
 設計メモ: [docs/architecture.md](docs/architecture.md)
+
+### CI / デプロイ
+
+| ワークフロー | タイミング | 内容 |
+|-------------|-----------|------|
+| [CI](.github/workflows/ci.yml) | push / PR → `main` | `npm test` + `npm run build` |
+| [Deploy](.github/workflows/deploy.yml) | push → `main` | テスト後、GitHub Pages へデプロイ |
+
+Pages 用ビルドでは `GITHUB_PAGES=true` を渡し、Vite の `base` を `/tc-campus-route/` に切り替えています。
 
 ## 構成
 
